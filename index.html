@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игровой портал</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <!-- Звездный фон -->
+  <div class="stars" id="stars"></div>
+  <!-- Метеорный дождь -->
+  <div id="meteorShower"></div>
+
+  <div class="language-selection">
+    <div class="language-option" onclick="changeLanguage('en')" title="English">
+      <img src="en.png" alt="English">
+    </div>
+    <div class="language-option" onclick="changeLanguage('ru')" title="Русский">
+      <img src="ru.png" alt="Русский">
+    </div>
+    <div class="language-option" onclick="changeLanguage('hi')" title="हिंदी">
+      <img src="in.png" alt="हिंदी">
+    </div>
+    <div class="language-option" onclick="changeLanguage('br')" title="Português (BR)">
+      <img src="br.png" alt="Português (BR)">
+    </div>
+    <div class="language-option" onclick="changeLanguage('es')" title="Español">
+      <img src="es.png" alt="Español">
+    </div>
+    <div class="language-option" onclick="changeLanguage('uz')" title="O'zbek">
+      <img src="uz.png" alt="O'zbek">
+    </div>
+    <div class="language-option" onclick="changeLanguage('az')" title="Azərbaycan">
+      <img src="az.png" alt="Azərbaycan">
+    </div>
+    <div class="language-option" onclick="changeLanguage('tr')" title="Türkçe">
+      <img src="tr.png" alt="Türkçe">
+    </div>
+    <div class="language-option" onclick="changeLanguage('pt')" title="Português">
+      <img src="pt.png" alt="Português">
+    </div>
+    <div class="language-option" onclick="changeLanguage('ar')" title="العربية">
+      <img src="ar.png" alt="العربية">
+    </div>
+  </div>
+
+<div id="Contact" class="tabcontent">
+    <div class="image-container">
+        <h2 class="title" id="game-picker-title">GAME PICKER</h2>
+        <img src="secret.png" alt="Secret Image">
+    </div>
+    <p id="device-output" class="device-info">Device not detected</p>
+    <button onclick="detectDevice()" class="detect-button" id="detect-button">
+        <span class="button-icon">📱</span> Detect device
+    </button>
+    <button onclick="startGame()" class="start-button" id="start-button">
+        <span class="button-icon">🎮</span> Start
+    </button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">&times;</button>
+            <h2 style="text-align: center;">Instruction</h2>
+            <div class="carousel">
+                <div class="slides" style="width: 200%; transition: transform 0.5s ease;">
+                    <div class="slide" style="width: 50%; float: left;"><img src="inst1.png" alt="Instruction 1"></div>
+                    <div class="slide" style="width: 50%; float: left;"><img src="inst2.png" alt="Instruction 2"></div>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <div class="dots-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="miniModal" class="modal-mini">
+        <div class="modal-content-mini">
+            <button class="close-button-mini" onclick="closeMiniModal()">&times;</button>
+        </div>
+    </div>
+</div>
+
+<div id="Games" class="tabcontent active">
+    <div class="row">
+        <div class="game">
+            <div class="game-badge">Hot</div>
+            <img src="1.png" alt="Mines Preview">
+            <div class="game-info">
+                <h3 id="game1-title">Mines</h3>
+                <button id="game1-button" onclick="openGame('mines')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <div class="game-badge">Hot</div>
+            <img src="mimines.jpg" alt="Mines Preview">
+            <div class="game-info">
+                <h3 id="game2-title">Mines Spribe</h3>
+                <button id="game2-button" onclick="openGame('spribe')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="qu.png" alt="CoinFlip Preview">
+            <div class="game-info">
+                <h3 id="game3-title">Rocket Queen</h3>
+                <button id="game3-button" onclick="openGame('queen')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="penafon.png" alt="Penalty Shoot Preview">
+            <div class="game-info">
+                <h3 id="game4-title">Penalty Shoot</h3>
+                <button id="game4-button" onclick="openGame('penalty')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="footxiconca.png" alt="Football X Preview">
+            <div class="game-info">
+                <h3 id="game5-title">Football X</h3>
+                <button id="game5-button" onclick="openGame('footballX')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="11.png" alt="CoinFlip Preview">
+            <div class="game-info">
+                <h3 id="game6-title">CoinFlip</h3>
+                <button id="game6-button" onclick="openGame('coin')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="5.png" alt="Football X Preview">
+            <div class="game-info">
+                <h3 id="game7-title">LuckyJet</h3>
+                <button id="game7-button" onclick="openGame('lucky')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="6.png" alt="CoinFlip Preview">
+            <div class="game-info">
+                <h3 id="game8-title">Aviator</h3>
+                <button id="game8-button" onclick="openGame('aviator')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="minesnew.jpg" alt="CoinFlip Preview">
+            <div class="game-info">
+                <h3 id="game9-title">Mines 1WIN</h3>
+                <button id="game9-button" onclick="openGame('minesnew')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <div class="game-badge new">New</div>
+            <img src="thi.png" alt="KingThimbles Preview">
+            <div class="game-info">
+                <h3 id="game10-title">King Thimbles</h3>
+                <button id="game10-button" onclick="openGame('kingth')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <div class="game-badge new">New</div>
+            <img src="road.png" alt="ChickenRoad Preview">
+            <div class="game-info">
+                <h3 id="game11-title">Chicken Road</h3>
+                <button id="game11-button" onclick="openGame('chickr')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="dice.avif" alt="Dice Preview">
+            <div class="game-info">
+                <h3 id="game12-title">Dice</h3>
+                <button id="game12-button" onclick="openGame('diceg')">Open</button>
+            </div>
+        </div>
+        <div class="game">
+            <div class="game-badge new">New</div>
+            <img src="aviamast.webp" alt="AviaMasters Preview">
+            <div class="game-info">
+                <h3 id="game13-title">AviaMasters</h3>
+                <button id="game13-button" onclick="openGame('aviam')">Open</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tab">
+    <button class="tablinks games-icon" data-tab="Games" onclick="openTab(event, 'Games', this)">
+        <img src="game.png" alt="Игры">
+    </button>
+    <button class="tablinks contact-icon" data-tab="Contact" onclick="openTab(event, 'Contact', this)">
+        <img src="money.png" alt="Контакты">
+    </button>
+</div>
+
+<audio id="aboutAudio" src="gif.mp3"></audio>
+
+<script>
+// Функция для создания метеоров
+function createMeteor() {
+    const meteorShower = document.getElementById('meteorShower');
+    const meteor = document.createElement('div');
+    meteor.className = 'meteor';
+    
+    // Случайное начальное положение
+    const startX = Math.random() * window.innerWidth;
+    const startY = -100;
+    
+    // Случайный размер
+    const size = Math.random() * 2 + 1;
+    const length = Math.random() * 100 + 30;
+    
+    meteor.style.left = startX + 'px';
+    meteor.style.top = startY + 'px';
+    meteor.style.width = size + 'px';
+    meteor.style.height = length + 'px';
+    meteor.style.animationDuration = Math.random() * 3 + 2 + 's';
+    
+    meteorShower.appendChild(meteor);
+    
+    // Удаляем метеор после окончания анимации
+    setTimeout(() => {
+        meteor.remove();
+    }, 6000);
+}
+
+// Запускаем периодическое создание метеоров
+setInterval(createMeteor, 8000);
+
+// Создаем несколько метеоров в начале
+for (let i = 0; i < 2; i++) {
+    setTimeout(createMeteor, Math.random() * 3000);
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
